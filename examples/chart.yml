@@ -1,0 +1,51 @@
+Charts:
+  - Sheet: "charts"
+    Cell: "B2"
+    Chart:
+      Type: "Line3D"
+      Series:
+        - Name: "cpu.tsv!B1:B1"
+          Values: "cpu.tsv!B3:B1000"
+        - Name: "cpu.tsv!C1:C1"
+          Values: "cpu.tsv!C3:C1000"
+        - Name: "cpu.tsv!D1:D1"
+          Values: "cpu.tsv!D3:D1000"
+      Legend:
+        Positin: "bottom"
+        ShowLegendKey: true
+      Title:
+        - Text: "CPU usage"
+  - Sheet: "charts"
+    Cell: "B16"
+    Chart:
+      Type: "Pie"
+      Series:
+        - Name: "population.csv!C1:C1"
+          Categories: "population.csv!B2:B20"
+          Values: "population.csv!C2:C20"
+      Legend:
+        Positin: "bottom"
+        ShowLegendKey: true
+      Title:
+        - Text: "World Population by Country"
+  - Sheet: "charts"
+    Cell: "B30"
+    Chart:
+      Type: "Col"
+      Series:
+        - Name: "temperature.csv!B1:B1"
+          Categories: "temperature.csv!A2:A6"
+          Values: "temperature.csv!B2:B6"
+      Legend:
+        Positin: "bottom"
+        ShowLegendKey: true
+      Title:
+        - Text: "Temperature and precipitation"
+    Combo:
+      - Type: "Line"
+        Series:
+          - Name: "temperature.csv!C1:C1"
+            Categories: "temperature.csv!A2:A6"
+            Values: "temperature.csv!C2:C6"
+        YAxis:
+          Secondary: true
