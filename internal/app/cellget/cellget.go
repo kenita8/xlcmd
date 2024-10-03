@@ -15,8 +15,9 @@ package cellget
 
 import (
 	"context"
+	"encoding/csv"
 	"fmt"
-	"strings"
+	"os"
 
 	"github.com/kenita8/xlcmd/internal/app/cellget/config"
 
@@ -55,9 +56,9 @@ func NewCellget(lc fx.Lifecycle, config config.Config, excel Excel, log *zap.Log
 }
 
 func (c *Cellget) outputCsv(sheet string, top, bottom, left, right int, format string) error {
-	f := "\t"
-	if format == "csv" {
-		f = ","
+	w := csv.NewWriter(os.Stdout)
+	if format == "tsv" {
+		w.Comma = '\t'
 	}
 	for i := top; i <= bottom; i++ {
 		var values []string
@@ -68,8 +69,9 @@ func (c *Cellget) outputCsv(sheet string, top, bottom, left, right int, format s
 			}
 			values = append(values, str)
 		}
-		fmt.Printf("%s\n", strings.Join(values, f))
+		w.Write(values)
 	}
+	w.Flush()
 	return nil
 }
 
