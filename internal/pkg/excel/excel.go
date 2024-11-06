@@ -233,7 +233,7 @@ func (e *Excel) RangeString(sheet string, topCol int, topRow int, bottomCol int,
 	if err != nil {
 		return "", ErrConvertCellName.Details("col", bottomCol, "row", bottomRow).Wrap(err)
 	}
-	return fmt.Sprintf("%s!%s:%s", sheet, top, bottom), nil
+	return fmt.Sprintf("'%s'!%s:%s", sheet, top, bottom), nil
 }
 
 func (e *Excel) GetSheetList() []string {
